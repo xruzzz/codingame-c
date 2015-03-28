@@ -14,47 +14,16 @@ typedef struct Direction
     char y;
 } DIR;
 
+char getTrit(int x)
+{
+    return x > 0 ? 1 : (x < 0 ? -1 : 0);
+}
+
 DIR finddir(SC posThor, SC light)
 {
     DIR res;
-    int dx = light.x - posThor.x;
-    int dy = light.y - posThor.y;
-    fprintf(stderr, "light.x ... %d \n", light.x);
-    fprintf(stderr, "Tor.x ... %d \n", posThor.x);
-    fprintf(stderr, "Diff res ... %d \n", dx);
-    if (dx == 0)
-    {
-        res.x = 0;
-    }
-    else
-        if (dx < 0)
-        {
-            res.x = -1;
-        }
-        else
-            if (dx > 0)
-            {
-                res.x = 1;
-            }
-    fprintf(stderr, "light.y ... %d \n", light.y);
-    fprintf(stderr, "Tor.y ... %d \n", posThor.y);
-    fprintf(stderr, "Diff res ... %d \n", dy);
-   
-    if (dy == 0)
-    {
-        res.y = 0;
-        
-    }
-    else
-        if (dy < 0)
-        {
-            res.y = -1;
-        }
-        else
-            if (dy > 0)
-            {
-                res.y = 1;
-            }
+    res.x = getTrit(light.x - posThor.x);
+    res.y = getTrit(light.y - posThor.y);
     return res;
 }
 
